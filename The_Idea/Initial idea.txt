@@ -1,0 +1,28 @@
+A full-stack web application that track habits progress and daily journaling.
+futures : 
+-1 a/ many users can use this platform which means users can create accounts (login/signup) 
+   b/ users can change personal information (passwords, emails, .... )
+   c/ users can forgot the password (password forgot future)
+   d/ users can upload photos as their avatar
+   
+
+-2 a/ users can create habits , delete habits , edit habits 
+   b/ users can set the habits as daily, twice a weak , 3 times a weak, ...
+   c/ users can write description about each habit
+   d/ users can set a date to start the habit
+   e/ each habit have a specific date and time
+   f/ users can set importance property to each habit (normal , important, crucial)
+   g/ habits can have tags or categories so the user sort base on that 
+
+-3 a/ habits progress must be saved for each day , and it can be access anytime
+   b/ users can journal in the site for each day separately 
+   c/ users can mark the habit as done or not 
+   d/ users can add a mark or note about each habit for each day
+   e/ if a crucial habit is not done users must fill a formula about the causes 
+   f/ visual representation(charts) of habits progress (for: each day, weak , month, half year, year)
+   g/ for each habit current days streak must be saved as well as the highest streak for each habit
+   h/ when user mark a habit as done  he have option to add note and the time he did it (the default is the time he puts when created the habit) 
+   i/ user can add also his mood when doing the habit 
+   j/ user can edit past days habit progress( if he forgot to mark them)
+ 
+   

@@ -1,0 +1,18 @@
+the main page:
+is where today habits are listed 
+where the user can mark it done or missed 
+where the user can edit a habit 
+the stats and charts page :
+where all graphical charts are shown 
+the user can specify many arguments as the duration of sort (last month, last weak , this weak), based on the tags , based        on the importance ect ect 
+user have the possibility to swap from circle chart or bar chart 
+user can choose colors .
+the login and signup pages
+the settings page:
+where user can change account info as well as other settings will add later 
+Journal Page
+Habit Manager Page
+
+
+ 
+  
