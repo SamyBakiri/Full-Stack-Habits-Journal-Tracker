@@ -16,7 +16,7 @@ class Auth {
             if(password_verify($password, $user['Password'])){
                 session_start();
                 $_SESSION['Email'] = $email;
-                $_SESSION['Id'] = $user['Id'];
+                $_SESSION['UserId'] = $user['Id'];
                 //can add first name and last name later 
                 header('location: index.php');
             }else{
