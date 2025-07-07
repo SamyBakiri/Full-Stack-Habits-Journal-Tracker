@@ -9,13 +9,21 @@
 <body>  
     <div class="fullpage">
         <div class="leftside">
-            <h1>HabTrack</h1>
+            <a class="title desktop_title" href="#">
+                <img src="Assets/habits.png" alt="logo" srcset="">
+                <h1>HabTrack</h1>
+            </a>
         </div>
-        <div class="rightside"></div>
+        <div class="rightside">
+            <a class="title mobile_title" href="#">
+                <img src="Assets/habits.png" alt="logo" srcset="">
+                <h1>HabTrack</h1>
+            </a>
+        </div>
         <div class="formCard">
             <div class="formChoice">
                 <button  id="signup" type="button">Sign Up</button>
-                <button class=".buttonOFF" id="signin" type="button">Sign in</button>
+                <button class="buttonOFF" id="signin" type="button">Sign in</button>
             </div>
             <p>Create an account</p>
             <from class="form" action="" method="post">
@@ -26,8 +34,9 @@
                 
                 <input type="email" name="" placeholder="Email" >
                 <input type="password" name="" placeholder="Password" >
+                <input type="password" name="" placeholder="Verify Password" >
                 <button type="submit">Create an account</button>
-
+                <p class="have_account">Already have an account? <a href="#">login</a></p>
             </from>
 
         </div>

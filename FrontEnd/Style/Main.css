@@ -3,6 +3,26 @@
     padding: 0;
     margin: 0;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
+.title{
+    margin: 5px;
+    gap: 10px;
+    padding: 10px;
+    width: fit-content;
+}
+.title img{
+    width: 35px;
+    height: 40px;
+}
+.desktop_title{
+    display: flex;
+}
+.mobile_title{
+    display: none;
+}
 button:hover{
     cursor: pointer;
 }
@@ -28,7 +48,7 @@ button:active{
 .formCard{
     position: absolute;
     top: 50%;
-    left: 40%;
+    left: 30%;
     transform: translate(-50%,-50%);
     width: 25%;
     max-width: 650px;
@@ -61,6 +81,15 @@ button{
     border-radius: 7px;
     padding: 8px;
 }
+.forgot_password , .have_account{
+    font-size: 0.9rem  !important;
+    display: block;
+    text-align: end;
+    margin-right: 20px !important;
+}
+.have_account a{
+    color: blue;
+}
 .formChoice{
     background-color:rgb(13, 71, 68);
     border-radius: 1000px;
@@ -68,6 +97,7 @@ button{
     justify-content: space-between;
     padding: 0 5px;
     width: 80%;
+    margin: 0 auto;
 }
 .formChoice button{
     border-radius: 1000px;
@@ -78,4 +108,41 @@ button{
     color: white;
     background-color: rgb(13, 71, 68) ;
     border: none;
+}
+@media(max-width: 1024px){
+    .fullpage{
+        flex-direction: column-reverse;
+    }
+    .rightside{
+        height: 55svh;
+        width: 100%;
+        background-size: contain;
+    }
+    .leftside{
+        height: 45vh;
+        width: 100%;
+        
+    }
+    .formCard{
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 500px;
+    }
+    .nameContainer{
+        flex-direction: column;
+        gap: 0;
+    }
+    
+.desktop_title{
+    display: none;
+}
+.mobile_title{
+    display: flex;
+    color: white;
+    width: auto;
+    justify-content: center;
+    padding-right: 30px;
+}
 }
