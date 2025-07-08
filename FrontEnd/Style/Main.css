@@ -3,6 +3,10 @@
     padding: 0;
     margin: 0;
 }
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f0f4ff, #dbeafe);
+}
 a{
     text-decoration: none;
     color: black;
@@ -35,26 +39,27 @@ button:active{
     position: relative;
 }
 .rightside{
-    width: 65%;
-    background-image: url(../Assets/loginIMG.jpg);
+    width: 50%;
+    background-image: url(../Assets/login.webp);
     background-repeat: no-repeat;
     background-position:  top  ;
     background-color: #8291EE;
+    border-radius: 0 20px 20px 0;
 }
 .leftside{
-    width: 35%;
+    width: 50%;
     background-color: aliceblue;
 }
 .formCard{
     position: absolute;
     top: 50%;
-    left: 30%;
-    transform: translate(-50%,-50%);
-    width: 25%;
+    right: 25%;
+    transform: translate(50%,-50%);
+    width: 30%;
     max-width: 650px;
-    background-color: #D9D9D9;
+    background-image: linear-gradient(to bottom right, #f5f7fa , #c3cfe2);
     border-radius: 20px;
-    padding: 20px 15px;
+    padding: 20px 25px;
     text-align: center;
     box-shadow: 3px 3px 10px ;
 }
@@ -69,17 +74,43 @@ button:active{
     
 }
 input{
-    padding: 8px;
+    padding: 10px;
+    padding-left: 30px;
     width: 100%;
     margin: 6px 0;
     border-radius: 7px;
     
+}
+.input_container{
+    position: relative;
+    width: 100%;
+}
+i{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(0%,-50%);
+    
+}
+.long_input_icon{
+    left: 3% !important;
 }
 button{
     width: 55%;
     margin: 10px 0;
     border-radius: 7px;
     padding: 8px;
+}
+button[type=submit]{
+    background-color: #1877f2;
+    color: white;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+button[type=submit]:hover{
+    background-color: #8291EE;
 }
 .forgot_password , .have_account{
     font-size: 0.9rem  !important;
@@ -144,5 +175,8 @@ button{
     width: auto;
     justify-content: center;
     padding-right: 30px;
+}
+i{
+    left: 3%;
 }
 }

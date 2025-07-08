@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HabTrack - Log in or sign up</title>
     <link rel="stylesheet" href="Style/Main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
+
 </head>
 <body>  
     <div class="fullpage">
-        <div class="leftside">
-            <a class="title desktop_title" href="#">
+        <div class="rightside">
+            <a class="title mobile_title" href="#">
                 <img src="Assets/habits.png" alt="logo" srcset="">
                 <h1>HabTrack</h1>
             </a>
         </div>
-        <div class="rightside">
-            <a class="title mobile_title" href="#">
+        <div class="leftside">
+            <a class="title desktop_title" href="#">
                 <img src="Assets/habits.png" alt="logo" srcset="">
                 <h1>HabTrack</h1>
             </a>
@@ -28,14 +33,30 @@
             <p>Create an account</p>
             <from class="form" action="" method="post">
                 <div class="nameContainer">
-                    <input type="text" name="" placeholder="First Name" >
-                    <input type="text" name="" placeholder="Last Name" >
+                    <div class="input_container">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" name="" placeholder="First Name" >
+                    </div>
+                    <div class="input_container">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" name="" placeholder="Last Name" >
+                    </div>
+                    
+                </div>
+                <div class="input_container">
+                    <i class="fa-solid fa-envelope long_input_icon"></i>
+                    <input type="email" name="" placeholder="Email" >
+                </div>
+                <div class="input_container">
+                    <i class="fa-solid fa-key long_input_icon"></i>
+                    <input type="password" name="" placeholder="Password" >
                 </div>
                 
-                <input type="email" name="" placeholder="Email" >
-                <input type="password" name="" placeholder="Password" >
-                <input type="password" name="" placeholder="Verify Password" >
-                <button type="submit">Create an account</button>
+                <div class="input_container">
+                    <i class="fa-solid fa-key long_input_icon"></i>
+                    <input type="password" name="" placeholder="Confirm Password" >
+                </div>
+                <button type="submit">Register</button>
                 <p class="have_account">Already have an account? <a href="#">login</a></p>
             </from>
 
