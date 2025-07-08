@@ -31,34 +31,34 @@
                 <button class="buttonOFF" id="signin" type="button">Sign in</button>
             </div>
             <p>Create an account</p>
-            <from class="form" action="" method="post">
+            <form class="form" action="" method="post" onsubmit="return form_validation">
                 <div class="nameContainer">
                     <div class="input_container">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" name="" placeholder="First Name" >
+                        <input type="text" name=""  id="fname" placeholder="First Name" required >
                     </div>
                     <div class="input_container">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" name="" placeholder="Last Name" >
+                        <input type="text" name="" id="lname" placeholder="Last Name" required>
                     </div>
                     
                 </div>
                 <div class="input_container">
                     <i class="fa-solid fa-envelope long_input_icon"></i>
-                    <input type="email" name="" placeholder="Email" >
+                    <input type="email" name="" id="email" placeholder="Email"  required>
                 </div>
                 <div class="input_container">
                     <i class="fa-solid fa-key long_input_icon"></i>
-                    <input type="password" name="" placeholder="Password" >
+                    <input type="password" name="" id="password" placeholder="Password"  required>
                 </div>
                 
                 <div class="input_container">
                     <i class="fa-solid fa-key long_input_icon"></i>
-                    <input type="password" name="" placeholder="Confirm Password" >
+                    <input type="password" name="" id="confirm_password" placeholder="Confirm Password" required>
                 </div>
                 <button type="submit">Register</button>
                 <p class="have_account">Already have an account? <a href="#">login</a></p>
-            </from>
+            </form>
 
         </div>
 
