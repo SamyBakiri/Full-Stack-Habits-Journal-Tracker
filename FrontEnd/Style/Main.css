@@ -1,3 +1,7 @@
+:root{
+    --main_blue: #5088fe;
+    --place_holder: #676767;
+}
 *{
     box-sizing: border-box;
     padding: 0;
@@ -38,17 +42,18 @@ button:active{
     height: 100svh;
     position: relative;
 }
-.rightside{
+.leftside{
     width: 50%;
     background-image: url(../Assets/login.webp);
     background-repeat: no-repeat;
     background-position:  top  ;
-    background-color: #8291EE;
     border-radius: 0 20px 20px 0;
 }
-.leftside{
+.rightside{
     width: 50%;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
+    background-image: url(../Assets/email-pattern.png);
+    background-size: contain;
 }
 .formCard{
     position: absolute;
@@ -57,6 +62,7 @@ button:active{
     transform: translate(50%,-50%);
     width: 30%;
     max-width: 650px;
+    min-width: 230px;
     background-image: linear-gradient(to bottom right, #f5f7fa , #c3cfe2);
     border-radius: 20px;
     padding: 20px 25px;
@@ -108,18 +114,21 @@ button[type=submit]{
     margin-top: 20px;
     letter-spacing: 1px;
     font-weight: bold;
+    border: none;
 }
 button[type=submit]:hover{
-    background-color: #8291EE;
+    background-color: #203dfb;
 }
 .forgot_password , .have_account{
-    font-size: 0.9rem  !important;
+    font-size: 0.8rem  !important;
     display: block;
     text-align: end;
     margin-right: 20px !important;
+    color: var(--place_holder);
 }
 .have_account a{
     color: blue;
+    padding-left: 5px;
 }
 .formChoice{
     background-color:rgb(13, 71, 68);
@@ -140,9 +149,9 @@ button[type=submit]:hover{
     background-color: rgb(13, 71, 68) ;
     border: none;
 }
-@media(max-width: 1024px){
+@media(max-width: 1100px){
     .fullpage{
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
     .rightside{
         height: 55svh;
@@ -152,6 +161,7 @@ button[type=submit]:hover{
     .leftside{
         height: 45vh;
         width: 100%;
+        border-radius: 0 0 20px 20px;
         
     }
     .formCard{
@@ -159,7 +169,9 @@ button[type=submit]:hover{
         left: 50%;
         transform: translate(-50%, -50%);
         width: 80%;
+        min-width: 280px;
         max-width: 500px;
+        
     }
     .nameContainer{
         flex-direction: column;
