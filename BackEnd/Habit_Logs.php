@@ -8,7 +8,7 @@ class habit_logs{
 
     public function set_habit_log($habitLogInfo){
         $sql = "INSERT INTO habit_logs( Status, Note, Mood, Date, Time,
-        Habit_Id) VALUES('?', '?', '?', '?', '?', '?');";
+        Habit_Id) VALUES(?, ?, ?, ?, ?, ?);";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param('ssssi', $habitLogInfo['Status'], $habitLogInfo['Note'], $habitLogInfo['Mood'],
         $habitLogInfo['Date'], $habitLogInfo['Time'], $habitLogInfo['Habit_Id']);

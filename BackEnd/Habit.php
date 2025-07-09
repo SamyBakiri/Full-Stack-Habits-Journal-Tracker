@@ -25,7 +25,7 @@ class habit{
 
     public function set_habit($habit_info){
         $sql = "INSERT INTO habits(Name, Description, Start_Date, Start_Time, End_Time, Importance, Frequency,
-        User_Id) VALUES('?', '?', '?', '?', '?', '?', '?', '?');";
+        User_Id) VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("sssssssi", $habit_info['Name'], $habit_info['Description'], $habit_info['Start_date'], 
         $habit_info['Start_Time'], $habit_info['End_Time'], $habit_info['Importance'], $habit_info['Freauency'],

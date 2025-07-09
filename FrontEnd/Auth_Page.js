@@ -16,6 +16,7 @@ function toSignIn(){
     verify_password.remove();
     form_p.textContent = "Welcome Back";
     submit_btn.textContent = "Log in";
+    submit_btn.name = "login";
     const forgot_password = document.createElement("a");
     forgot_password.classList.add("forgot_password");
     forgot_password.href = "#";
@@ -40,6 +41,7 @@ function toSignUp(){
     
     form_p.textContent = "Create an account";
     submit_btn.textContent = "Register";
+    submit_btn.name = "register";
     form.lastChild.remove();
     const have_account = document.createElement("p");
     have_account.classList.add("have_account");

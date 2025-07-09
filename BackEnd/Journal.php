@@ -7,8 +7,8 @@ class journal{
     }
     
     public function set_journal($journal_info) {
-        $sql = "INSERT INTO journal_note(Date, Journal, User_Id) VALUES('?', '?',
-        '?');";
+        $sql = "INSERT INTO journal_note(Date, Journal, User_Id) VALUES(?, ?,
+        ?);";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ssi",$journal_info['Date'], 
         $journal_info['Journal'], $journal_info['User_Id']);
