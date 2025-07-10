@@ -127,8 +127,12 @@ button[type=submit]:hover{
     color: var(--place_holder);
 }
 .have_account a{
-    color: blue;
+    color: blue ;
     padding-left: 5px;
+
+}
+#login_btn:hover{
+    cursor: pointer;
 }
 .formChoice{
     background-color:rgb(13, 71, 68);
@@ -191,4 +195,31 @@ button[type=submit]:hover{
 i{
     left: 3%;
 }
+}
+.input_error{
+    --input_error_content: "";
+    position:relative;
+    margin-bottom: 10px;
+
+}
+.success_msg{
+    color: #2ecc71;
+    background-color: #eafaf1;
+    font-weight: bold;
+    font-size: 1rem !important;
+}
+.input_error input{
+    border-color: #e74c3c;
+    border-width: 3px;
+}
+.input_error::after{
+    content: var(--input_error_content);
+    position: absolute;
+    color: #e74c3c;
+    font-size: 0.65rem;
+    bottom: -10px;
+    left: 10px;
+    font-weight: bold;
+    
+    
 }
