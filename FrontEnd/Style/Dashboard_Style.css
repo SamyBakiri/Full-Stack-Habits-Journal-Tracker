@@ -1,0 +1,111 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Inter', sans-serif;
+}
+.mainPage{
+    display: flex;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.sideBar{
+    height: 100svh;
+    width: 20%;
+    max-width: 350px;
+    background-color: #f7f7f7;
+    text-align: center;
+    padding: 1px;
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    margin: 20px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.title img{
+    
+}
+.sideBar ul{
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 2;
+    list-style: none;
+    
+}
+.sideBar li{
+    padding: 0 20px;
+    width: 100%;
+}
+
+li p{
+    
+    
+}
+.sideBar img{
+    position: relative;
+    bottom: 3px;
+    height: 27px;
+    width: 33px;
+}
+ul a{
+    font-size: 1.1rem;
+    padding: 10px 0px; 
+    border-radius: 10px;
+    transition: 0.4s;
+    display: inline-block;
+}
+
+ul a:hover{
+    background-color: rgb(226, 218, 218);
+    transform: scale(1.05);
+    transform: translateX(10px);
+
+}
+li a{
+    display: flex;
+    gap: 15px;
+}
+li:last-child{
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+li:last-child a{
+    justify-content:center;
+}
+
+
+
+
+.mainSide{
+    background-color: #ffffff;
+    flex-grow: 2;
+}
+header{
+    background-color: aquamarine;
+    padding: 30px;
+    display: flex;
+    height: 27vh;
+}
+.welcome_msg{
+    text-align: center;
+    margin-left: 60px;
+    
+}
+.welcome_msg h2{
+    font-size: 1.7rem;
+    margin-bottom: 5px;
+}
+
+
+
+
