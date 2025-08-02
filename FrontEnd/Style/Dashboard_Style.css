@@ -30,9 +30,7 @@ a{
     justify-content: center;
     gap: 10px;
 }
-.title img{
-    
-}
+
 .sideBar ul{
     text-align: start;
     display: flex;
@@ -47,10 +45,7 @@ a{
     width: 100%;
 }
 
-li p{
-    
-    
-}
+
 .sideBar img{
     position: relative;
     bottom: 3px;
@@ -84,27 +79,164 @@ li:last-child a{
 }
 
 
-
+header img{
+    display: none;
+}
 
 .mainSide{
     background-color: #ffffff;
     flex-grow: 2;
+    
 }
 header{
-    background-color: aquamarine;
+    background-image: linear-gradient(to bottom left, #60a0fb , #83dbf2);
+
     padding: 30px;
     display: flex;
     height: 27vh;
+    z-index: 1;
 }
 .welcome_msg{
     text-align: center;
-    margin-left: 60px;
+    
     
 }
 .welcome_msg h2{
     font-size: 1.7rem;
     margin-bottom: 5px;
 }
+.main{
+    width: 80%;
+    height: calc(73vh + 60px);
+    
+    padding: 1px;
+    margin: 0 auto;
+    
+    margin-top: -60px;
+    z-index: 0;
+    
+}
+.card_container{
+    display: grid;                    
+    grid-template-columns: auto auto auto;
+    gap: 20px 30px ;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+}
+.card_container > div{
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card_container .card{
+    background-image: linear-gradient(to bottom left, #f5f7fa , #c3cfe2);
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.card_title{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.card_title p{
+    font-size: 20px;
+}
+
+.card_container .card > p{
+    font-size: 60px;
+}
+.card_container .charts_card{
+    grid-column: 1 / span 2;
+    align-items: end;
+    justify-content: space-between;
+    padding: 20px 30px 30px 30px;
+    flex-direction: column;
+}
+.chart_title{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.chart_title p{
+    font-size: 20px;
+}
+.bars{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.chart_bar{
+    width: 30px;
+    background-color: #83dbf2;
+    height: 100px;
+    position: relative;
+    border-radius: 100px;
+    
+}
+.chart_bar p{
+    position: absolute;
+    bottom: -20px;
+    width: 30px;
+}
+
+
+
+
+.card_container .habit_list{
+    grid-column: 1 / span 3;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 992px){
+    .sideBar{
+        display: none;
+    }
+    header{
+        justify-content: center;
+        gap: 30px;
+    }
+    header img{
+        display: block;
+        height: 30px;
+        width: 30px;
+    }
+}
+@media (max-width: 768px){
+    .main{
+        width: 95%;
+    }
+}
+@media (max-width: 600px){
+    .card_container{
+        grid-template-columns: auto auto;
+    }
+    .card_container .habit_list{
+        grid-column: 1 / span 2;
+    }
+    .card_container > :nth-child(5){
+        grid-area: 2 / 2 / 3 / 3;
+    }
+}
+
+
+
 
 
 
