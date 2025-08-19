@@ -1,0 +1,18 @@
+{
+    "name": "samyp/backend",
+    "authors": [
+        {
+            "name": "Samy",
+            "email": "samy.bakiri.cs@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "Core\\": "Core/"
+        }
+    }
+}
