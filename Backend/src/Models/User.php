@@ -1,4 +1,5 @@
 <?php
+namespace app\Models;
 class User{
     private $Db_conn;
 
