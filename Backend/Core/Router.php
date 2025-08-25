@@ -1,5 +1,7 @@
 <?Php
 namespace Core;
+use Core\App;
+
 
 class Router{
     private $routes = [];
@@ -44,9 +46,8 @@ class Router{
                 
                 $controllerClassName = $route["handler"][0];
                 $controllerMethodName = $route["handler"][1];
-                
-                $controllerInstance = new $controllerClassName();
-                
+                $controllerInstance = App::initialise($controllerClassName);
+
                 $args = $matches;
                 if($method == "POST" || $method == "PUT"){
                     $data = json_decode(file_get_contents("php://input"), true);
