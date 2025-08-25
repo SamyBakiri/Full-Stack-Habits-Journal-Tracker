@@ -3,7 +3,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
-// create dotenv instance to read .env file and load()  will save the data in $__env[] super global vars
+// create dotenv instance to read .env file , load() will save the data in $__env[] super global vars
 $dotenv = Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 

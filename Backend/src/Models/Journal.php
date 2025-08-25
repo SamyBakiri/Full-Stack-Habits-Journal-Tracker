@@ -24,7 +24,14 @@ class Journal{
         return $stmt->execute();
     }
 
-    public function all($userId){
+    public function all(){
+        $sql = "SELECT * FROM journal_note;";
+        $result = $this->db->query($sql);
+        return $result->fetch_assoc();
+    }
+
+
+    public function allByUser($userId){
         $sql = "SELECT * FROM journal_note WHERE User_Id = ?;";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("i", $userId);
@@ -40,6 +47,13 @@ class Journal{
         
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
+    }
+
+    public function delete($userId, $date){
+        $sql = "DELETE FROM journal_note WHERE User_Id = ?, Date = ?;";
+        $stmt = $this->db->prepare("is", $userId, $date);
+        
+        return $stmt->execute();
     }
     
 }

@@ -17,7 +17,12 @@ class Habit_logs{
         return $stmt->get_result()->fetch_assoc();
     }
 
-    public function all($habitID){
+    public function all(){
+        $sql = "SELECT * FROM habit_logs ;";
+        return $this->db->query($sql)->fetch_assoc();
+    }
+
+    public function allById($habitID){
         $sql = "SELECT * FROM habit_logs WHERE Habit_Id = ?;";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("i", $habitID);
@@ -41,6 +46,14 @@ class Habit_logs{
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("sssssi", $data['Status'], $data['Note'], $data['Mood'],
         $date, $data['Time'], $habitID);
+        
+        return $stmt->execute();
+    }
+
+    public function delete($habitID, $date){
+        $sql = "DELETE FROM habit_logs WHERE Habit_Id = ? AND Date = ?;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("is",  $habitID, $date);
         
         return $stmt->execute();
     }

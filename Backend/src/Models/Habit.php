@@ -8,26 +8,33 @@ class Habit{
         $this->db = $db;
     }
 
-    public function create($data){
+    public function create($userId, $data){
         $sql = "INSERT INTO habits(Name, Description, Start_Date,
         Start_Time, End_Time, Importance, Frequency, User_Id) VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("ssssssii", $data['Name'], $data['Description'], $data['Start_Date'],
-        $data['Start_Time'], $data['End_Time'], $data['Importance'], $data['Frequency'], $data['User_ID']);
+        $data['Start_Time'], $data['End_Time'], $data['Importance'], $data['Frequency'], $userId);
         
         return $stmt->execute();
     }
     
-    public function find($id){
+    public function find($habitId){
         $sql = "SELECT * FROM habits WHERE Habit_Id = ?;";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("i", $habitId);
         
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
     }
+    public function all(){
+        $sql = "SELECT * FROM habits ;";
+        $result = $this->db->query($sql);
+        return $result->fetch_assoc();
+    }
+
+
     
-    public function all($userId){
+    public function allByUser($userId){
         $sql = "SELECT * FROM habits WHERE User_Id = ?;";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("i", $userId);
