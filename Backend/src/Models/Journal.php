@@ -8,18 +8,18 @@ class Journal{
         $this->db = $db;
     }
 
-    public function create($userId, $date, $data){
+    public function create($userId, $data){
         $sql = "INSERT INTO journal_note(Date, Journal, User_Id) VALUES(?, ?, ?;";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("ssi",$date, $data['Journal'], $userId);
+        $stmt->bind_param("ssi",$data["Date"], $data['Journal'], $userId);
         
         return $stmt->execute();
     }
 
-    public function update($userId, $date, $data){
+    public function update($userId, $data){
         $sql = "UPDATE journal_note SET Journal = ? WHERE User_Id = ?, Date = ?;";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("sis", $data['Journal'], $userId, $date);
+        $stmt->bind_param("sis", $data['Journal'], $userId, $data["Date"]);
 
         return $stmt->execute();
     }

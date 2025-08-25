@@ -14,8 +14,8 @@ class Habit_LogsController{
         Response::jsonResponse(200, $data);
     }
 
-    public function show($habitId){
-        $data = $this->habit_logsModel->find($habitId);
+    public function show($habitId, $date){
+        $data = $this->habit_logsModel->find($habitId, $date);
         if(!$data){
             Response::jsonResponse(404, [
                 "status" => "error",
@@ -38,8 +38,8 @@ class Habit_LogsController{
         }
     }
 
-    public function store($habitId, $date, $data){
-        if($this->habit_logsModel->create($habitId, $date, $data)){
+    public function store($habitId, $data){
+        if($this->habit_logsModel->create($habitId, $data)){
             Response::jsonResponse(200, [
                 "status" => "success",
                 "message" => "habit log created successfully"
@@ -66,8 +66,8 @@ class Habit_LogsController{
         }
     }
 
-    public function update($habitId, $date){
-        if($this->habit_logsModel->update($habitId, $date)){
+    public function update($habitId, $data){
+        if($this->habit_logsModel->update($habitId, $data)){
             Response::jsonResponse(200, [
                 "status" => "success",
                 "message" => "habit log updated successfully"

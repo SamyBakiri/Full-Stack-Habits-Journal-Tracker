@@ -31,21 +31,22 @@ class Habit_logs{
         return $stmt->get_result()->fetch_assoc();
     }
 
-    public function update($habitID, $date, $data){
+    public function update($habitID, $data){
         $sql = "UPDATE habit_logs SET Status = ?, Note = ?, Mood = ?,
         Time = ? WHERE Habit_Id = ?, AND Date = ?;";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("ssss", $data['Status'], $data['Note'], $data['Mood'], $data['Time']);
+        $stmt->bind_param("ssssss", $data['Status'], $data['Note'], $data['Mood'], $data['Time'],
+        $habitID, $data["Date"]);
         
         return $stmt->execute();
     }
 
-    public function create($habitID, $date, $data){
+    public function create($habitID, $data){
         $sql = "INSERT INTO habit_logs(Status, Note, Mood, Date, Time,
         Habit_id) VALUES(?, ?, ?, ?, ?, ?);";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("sssssi", $data['Status'], $data['Note'], $data['Mood'],
-        $date, $data['Time'], $habitID);
+        $data["Date"], $data['Time'], $habitID);
         
         return $stmt->execute();
     }

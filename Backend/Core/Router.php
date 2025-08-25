@@ -47,12 +47,18 @@ class Router{
                 
                 $controllerInstance = new $controllerClassName();
                 
-                call_user_func_array([$controllerInstance, $controllerMethodName], $matches);
+                $args = $matches;
+                if($method == "POST" || $method == "PUT"){
+                    $data = json_decode(file_get_contents("php://input"), true);
+                    $args[] = $data;
+                }
+                
+                call_user_func_array([$controllerInstance, $controllerMethodName], $args);
             }
         }
         //not found url 404
     }
-                // /users/{id}/books/{id} ==> /users/(\d+)/books/(\d+)
+                // /users/{id}/books/{id} ==> #/users/(\d+)/books/(\d+)#
     public function convertPathToRegex($path):string{
         $regex = preg_replace("#\{\w+\}#", "(\d+)", $path);
         return "#^$regex/?$#";
