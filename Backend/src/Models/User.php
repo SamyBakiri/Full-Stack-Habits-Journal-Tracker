@@ -1,5 +1,5 @@
 <?php
-namespace app\Models;
+namespace App\Models;
 class User{
     private $Db_conn;
 
@@ -17,21 +17,23 @@ class User{
 
     public function all(){
         $sql = "SELECT * FROM users;";
-        return $this->Db_conn->query($sql)->fetch_assoc();
+        return $this->Db_conn->query($sql)->fetch_all(MYSQLI_ASSOC);
     }
 
     public function create($data){
         $sql = "INSERT INTO users(FirstName, LastName, Email, Password)
         values(?, ?, ?, ?);";
         $stmt = $this->Db_conn->prepare($sql);
-        $stmt->bind_param('ssss',$data['FirstName'], $data['LastName'], $data['Email'], password_hash($data['Password'],PASSWORD_DEFAULT));
+        $password = password_hash($data['Password'], PASSWORD_DEFAULT);
+        $stmt->bind_param('ssss',$data['FirstName'], $data['LastName'], $data['Email'], $password);
         return $stmt->execute();
     }
 
     public function update($id, $data){
         $sql = "UPDATE users SET FirstName = ?, LastName = ?, Email = ?, Password = ? WHERE User_Id = ?;";
         $stmt = $this->Db_conn->prepare($sql);
-        $stmt->bind_param('ssssi',$data['FirstName'], $data['LastName'], $data['Email'], password_hash($data['Password'],PASSWORD_DEFAULT), $id);
+        $password = password_hash($data['Password'], PASSWORD_DEFAULT);
+        $stmt->bind_param('ssssi',$data['FirstName'], $data['LastName'], $data['Email'], $password, $id);
         return $stmt->execute();
     }
 

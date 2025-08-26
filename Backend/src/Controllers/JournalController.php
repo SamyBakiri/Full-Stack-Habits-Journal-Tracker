@@ -1,12 +1,12 @@
 <?php
-namespace app\Controller;
+namespace App\Controllers;
 use Helper\Response;
 
 class JournalController{
     private $journalModel;
 
     public function __construct( $journalModel) {
-        $this->$journalModel = $journalModel;
+        $this->journalModel = $journalModel;
     }
 
     public function index(){
@@ -38,8 +38,8 @@ class JournalController{
         }
     }
 
-    public function store($userId, $date, $data){
-        if($this->journalModel->create($userId, $date, $data)){
+    public function store($userId, $data){
+        if($this->journalModel->create($userId, $data)){
             Response::jsonResponse(200, [
                 "status" => "success",
                 "message" => "journal created successfully"
@@ -52,8 +52,8 @@ class JournalController{
         }
     }
     
-    public function update($userId, $date, $data){
-        if($this->journalModel->update($userId, $date, $data)){
+    public function update($userId, $data){
+        if($this->journalModel->update($userId, $data)){
             Response::jsonResponse(200, [
                 "status" => "success",
                 "message" => "journal updated successfully"

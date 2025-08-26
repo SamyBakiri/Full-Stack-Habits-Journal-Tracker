@@ -1,7 +1,6 @@
 <?php
-namespace app\Controller;
+namespace App\Controllers;
 use Helper\Response;
-use PDO;
 
 class HabitController{
     private $habitModel;

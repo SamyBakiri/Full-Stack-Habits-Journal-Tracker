@@ -1,8 +1,8 @@
 <?php
-namespace app\Controller;
+namespace App\Controllers;
 use Helper\Response;
 
-class Habit_LogsController{
+class Habit_logsController{
     private $habit_logsModel;
 
     public function __construct( $habit_logsModel) {

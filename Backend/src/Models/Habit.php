@@ -1,5 +1,5 @@
 <?php
-namespace app\Models;
+namespace App\Models;
 
 class Habit{
     private $db;
@@ -29,7 +29,7 @@ class Habit{
     public function all(){
         $sql = "SELECT * FROM habits ;";
         $result = $this->db->query($sql);
-        return $result->fetch_assoc();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 
@@ -40,7 +40,7 @@ class Habit{
         $stmt->bind_param("i", $userId);
         
         $stmt->execute();
-        return $stmt->get_result()->fetch_assoc();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
     public function update($habitId, $data){

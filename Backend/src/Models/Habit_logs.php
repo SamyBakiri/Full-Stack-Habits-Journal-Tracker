@@ -1,17 +1,17 @@
 <?php
-namespace app\Models;
+namespace App\Models;
 
 class Habit_logs{
     private $db;
 
     public function __construct($db) {
-        $this->$db = $db;
+        $this->db = $db;
     }
 
     public function find($habitID, $date){
         $sql = "SELECT * FROM habit_logs WHERE Habit_Id = ? AND Date = ?;";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("is",$habitID, $date);
+        $stmt->bind_param("is",$habitID, $date["Date"]);
         
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
@@ -19,7 +19,7 @@ class Habit_logs{
 
     public function all(){
         $sql = "SELECT * FROM habit_logs ;";
-        return $this->db->query($sql)->fetch_assoc();
+        return $this->db->query($sql)->fetch_all(MYSQLI_ASSOC);
     }
 
     public function allById($habitID){
@@ -28,12 +28,12 @@ class Habit_logs{
         $stmt->bind_param("i", $habitID);
         
         $stmt->execute();
-        return $stmt->get_result()->fetch_assoc();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
     public function update($habitID, $data){
         $sql = "UPDATE habit_logs SET Status = ?, Note = ?, Mood = ?,
-        Time = ? WHERE Habit_Id = ?, AND Date = ?;";
+        Time = ? WHERE Habit_Id = ? AND Date = ?;";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("ssssss", $data['Status'], $data['Note'], $data['Mood'], $data['Time'],
         $habitID, $data["Date"]);
@@ -51,11 +51,10 @@ class Habit_logs{
         return $stmt->execute();
     }
 
-    public function delete($habitID, $date){
+    public function delete($habitID, $data){
         $sql = "DELETE FROM habit_logs WHERE Habit_Id = ? AND Date = ?;";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("is",  $habitID, $date);
-        
+        $stmt->bind_param("is",  $habitID, $data["Date"]);
         return $stmt->execute();
     }
 }

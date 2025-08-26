@@ -1,10 +1,10 @@
 <?php
 
 use Core\Router;
-use app\Controller\UserController;
-use app\Controller\Habit_LogsController;
-use app\Controller\HabitController;
-use app\Controller\JournalController;
+use App\Controllers\UserController;
+use App\Controllers\Habit_logsController;
+use App\Controllers\HabitController;
+use App\Controllers\JournalController;
 
 
 $router = new Router();
@@ -25,12 +25,12 @@ $router->put("/habits/{id}", [HabitController::class, "update"]);
 $router->delete("/habits/{id}", [HabitController::class, "destroy"]);
 
 //habit_logs api endpoints
-$router->get("/habitlogs", [Habit_LogsController::class, "index"]);
-$router->get("/habits/{id}/habitlog", [Habit_LogsController::class, "show"]);
-$router->get("/habits/{id}/habitlogs", [Habit_LogsController::class, "allByHabit"]);
-$router->post("/habits/{id}/habitlogs", [Habit_LogsController::class, "store"]);
-$router->put("/habits/{id}/habitlogs", [Habit_LogsController::class, "update"]);
-$router->delete("/habits/{id}/habitlogs", [Habit_LogsController::class, "destroy"]);
+$router->get("/habitlogs", [Habit_logsController::class, "index"]);
+$router->get("/habits/{id}/habitlog", [Habit_logsController::class, "show"]);
+$router->get("/habits/{id}/habitlogs", [Habit_logsController::class, "allByHabit"]);
+$router->post("/habits/{id}/habitlogs", [Habit_logsController::class, "store"]);
+$router->put("/habits/{id}/habitlogs", [Habit_logsController::class, "update"]);
+$router->delete("/habits/{id}/habitlogs", [Habit_logsController::class, "destroy"]);
 
 //journal api endpoints
 $router->get("/journals", [JournalController::class, "index"]);
