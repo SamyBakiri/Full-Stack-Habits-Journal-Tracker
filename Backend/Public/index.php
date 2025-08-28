@@ -2,7 +2,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
-use Core\Router;
+use App\Core\Router;
 
 
 // create dotenv instance to read .env file , load() will save the data in $__env[] super global vars

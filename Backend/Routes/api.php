@@ -1,6 +1,7 @@
 <?php
 
-use Core\Router;
+use App\Controllers\AuthController;
+use App\Core\Router;
 use App\Controllers\UserController;
 use App\Controllers\Habit_logsController;
 use App\Controllers\HabitController;
@@ -8,6 +9,10 @@ use App\Controllers\JournalController;
 
 
 $router = new Router();
+
+//Authentication api endpoints
+$router->post("/auth/login", [AuthController::class, "login"], false);
+$router->post("/auth/register", [AuthController::class, "register"], false);
 
 //user api endpoints
 $router->get("/users", [UserController::class, "index"]);

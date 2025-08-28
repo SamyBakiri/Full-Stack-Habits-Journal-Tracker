@@ -15,6 +15,15 @@ class User{
         return $stmt->get_result()->fetch_assoc();
     }
 
+    public function findByEmail($email){
+        $sql = "SELECT * FROM users where Email = ?;";
+        $stmt = $this->Db_conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        
+        return $stmt->get_result()->fetch_assoc();
+    }
+
     public function all(){
         $sql = "SELECT * FROM users;";
         return $this->Db_conn->query($sql)->fetch_all(MYSQLI_ASSOC);
