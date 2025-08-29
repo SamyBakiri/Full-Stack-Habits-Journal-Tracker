@@ -4,9 +4,11 @@ use Helper\Response;
 
 class JournalController{
     private $journalModel;
+    private $userId;
 
-    public function __construct( $journalModel) {
+    public function __construct( $journalModel, $payLoad) {
         $this->journalModel = $journalModel;
+        $this->userId = $payLoad->sub;
     }
 
     public function index(){
@@ -14,8 +16,8 @@ class JournalController{
         Response::jsonResponse(200, $data);
     }
 
-    public function show($userId, $date){
-        $data = $this->journalModel->find($userId, $date);
+    public function show($data){
+        $data = $this->journalModel->find($this->userId, $data);
         if(!$data){
             Response::jsonResponse(404, [
                 "status" => "error",
@@ -26,8 +28,8 @@ class JournalController{
         }
     }
 
-    public function allByUser($userId){
-        $data = $this->journalModel->allByUser($userId);
+    public function allByUser(){
+        $data = $this->journalModel->allByUser($this->userId);
         if(!$data){
             Response::jsonResponse(404, [
                 "status" => "error",
@@ -38,8 +40,8 @@ class JournalController{
         }
     }
 
-    public function store($userId, $data){
-        if($this->journalModel->create($userId, $data)){
+    public function store($data){
+        if($this->journalModel->create($this->userId, $data)){
             Response::jsonResponse(200, [
                 "status" => "success",
                 "message" => "journal created successfully"
@@ -52,8 +54,12 @@ class JournalController{
         }
     }
     
-    public function update($userId, $data){
-        if($this->journalModel->update($userId, $data)){
+    public function update($data){
+        $journal = $this->journalModel->find($this->userId, $data);
+        if(!$journal){
+            Response::jsonResponse(404, ["message" => "journal not found"]);
+        }
+        if($this->journalModel->update($this->userId, $data)){
             Response::jsonResponse(200, [
                 "status" => "success",
                 "message" => "journal updated successfully"
@@ -66,8 +72,12 @@ class JournalController{
         }
     }
 
-    public function destroy($userId, $date){
-        if($this->journalModel->delete($userId, $date)){
+    public function destroy($data){
+        $journal = $this->journalModel->find($this->userId, $data);
+        if(!$journal){
+            Response::jsonResponse(404, ["message" => "journal not found"]);
+        }
+        if($this->journalModel->delete($this->userId, $data)){
             Response::jsonResponse(200, [
                 "status" => "success",
                 "message" => "journal deleted successfully"

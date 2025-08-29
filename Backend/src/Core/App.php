@@ -1,9 +1,10 @@
 <?php
 namespace App\Core;
 use App\Core\Database;
+use App\Models\Habit;
 
 class App{
-    public static function initialise($controllerClassName){
+    public static function initialise($controllerClassName, $payLoad){
         //initialise database connection 
         $db_config = require __DIR__ . '/../Config/DB.php';
         $dataBase = new Database($db_config);
@@ -21,16 +22,11 @@ class App{
         $modelInctance = new $modelClassName($dbConnection);// create a model instance
 
         //initialise the controller 
-        $controllerInstance = new $controllerClassName($modelInctance);
+        if($controllerClassName === "App\Controllers\Habit_logsController"){
+            return $controllerInstance = new $controllerClassName($modelInctance, new Habit($dbConnection) ,$payLoad);
+        }
+        $controllerInstance = new $controllerClassName($modelInctance, $payLoad);
 
         return $controllerInstance;
     }
 }
-// //controllerClassName = App\Controllers\UserController 
-        
-        // // initialise the model:
-        // // get the name of the model class from the controller class name(controllerClassName = App\Controllers\UserController) 
-        // $modelClassName = preg_replace("#Controller$#", "", $controllerClassName);
-        // //modelClassName = App\Controllers\User 
-        // $modelClassName = preg_replace("#Controllers#", "Models", $modelClassName);// get the name of the model class from the controller class name
-        // //modelClassName = App\Models\User 

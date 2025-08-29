@@ -51,6 +51,7 @@ class Router{
             $regex = $this->convertPathToRegex($route["path"]);
             if(preg_match($regex, $uri, $matches)){
                 array_shift($matches); //delete the first match (the uri )
+                $payLoad = null;
                 if($route["protected"]){
                     $authMiddleWare = new AuthMiddleware;
                     $jwtService = new JwtService;
@@ -59,7 +60,7 @@ class Router{
 
                 $controllerClassName = $route["handler"][0];
                 $controllerMethodName = $route["handler"][1];
-                $controllerInstance = App::initialise($controllerClassName);
+                $controllerInstance = App::initialise($controllerClassName, $payLoad);
 
                 $args = $matches;
                 

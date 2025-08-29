@@ -8,10 +8,10 @@ class Habit_logs{
         $this->db = $db;
     }
 
-    public function find($habitID, $date){
+    public function find($habitID, $data){
         $sql = "SELECT * FROM habit_logs WHERE Habit_Id = ? AND Date = ?;";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("is",$habitID, $date["Date"]);
+        $stmt->bind_param("is",$habitID, $data["Date"]);
         
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();

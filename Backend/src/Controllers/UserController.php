@@ -5,9 +5,12 @@ use Helper\Response;
 
 class UserController{
     private $userModel;
+    private $userId;
 
-    public function __construct($userModel) {
+
+    public function __construct($userModel, $payLoad) {
         $this->userModel = $userModel;
+        $this->userId = $payLoad->sub;
     }
 
     public function index(){
@@ -15,14 +18,16 @@ class UserController{
         Response::jsonResponse(200, $data);
     }
 
-    public function show($id){
-        $data = $this->userModel->find($id);
+    public function show(){
+        $data = $this->userModel->find($this->userId);
+
         if(!$data){
             Response::jsonResponse(404,[
                 "status" => "error",
                 "message" => "user not found"
             ]);
         }else{
+            unset($data["Password"]);
         Response::jsonResponse(200, $data);
         }
     }
@@ -41,8 +46,8 @@ class UserController{
             ]);
         }
     }
-    public function update($id, $data){
-        if($this->userModel->update($id, $data)){
+    public function update($data){
+        if($this->userModel->update($this->userId, $data)){
             $response = [
                 "status" => "successful",
                 "msg"    => "account data updated"
@@ -55,8 +60,8 @@ class UserController{
             ]);
         }
     }
-    public function destroy($id){
-        if($this->userModel->delete($id)){
+    public function destroy(){
+        if($this->userModel->delete($this->userId)){
             $response = [
                 "status" => "successful",
                 "msg"    => "account deleted"

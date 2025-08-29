@@ -1,12 +1,16 @@
 <?php
 namespace App\Controllers;
+
+use Helper\EnsureOwnerShip;
 use Helper\Response;
 
 class HabitController{
     private $habitModel;
+    private $userId;
 
-    public function __construct($habitModel) {
+    public function __construct($habitModel, $payLoad) {
         $this->habitModel = $habitModel;
+        $this->userId = $payLoad->sub;
     }
 
     public function index(){
@@ -16,18 +20,12 @@ class HabitController{
 
     public function show($habitID){
         $data = $this->habitModel->find($habitID);
-        if(!$data){
-            Response::jsonResponse(404, [
-                "status" => "error",
-                "message" => "habit not found"
-            ]);
-        }else{
-            Response::jsonResponse(200, $data);
-        }
+        EnsureOwnerShip::verify($data, $this->userId);
+        Response::jsonResponse(200, $data);
     }
 
-    public function allByUser($userId){
-        $data = $this->habitModel->allByUser($userId);
+    public function allByUser(){
+        $data = $this->habitModel->allByUser($this->userId);
         if(!$data){
             Response::jsonResponse(404, [
                 "status" => "error",
@@ -38,8 +36,8 @@ class HabitController{
         }
     }
 
-    public function store($userId, $data){
-        if($this->habitModel->create($userId, $data)){
+    public function store($data){
+        if($this->habitModel->create($this->userId, $data)){
             Response::jsonResponse(200,[
                 "status" => "success",
                 "message" => "habit created successfully"
@@ -52,8 +50,11 @@ class HabitController{
         }
     }
 
-    public function update($habitID, $data){
-        if($this->habitModel->update($habitID, $data)){
+    public function update($habitId, $data){
+        
+        $habit = $this->habitModel->find($habitId);
+        EnsureOwnerShip::verify($habit, $this->userId);
+        if($this->habitModel->update($habitId, $data)){
             Response::jsonResponse(200, [
                 "status" => "success",
                 "message" => "habit updated successfully"
@@ -66,8 +67,10 @@ class HabitController{
         }
     }
 
-    public function destroy($habitID){
-        if($this->habitModel->delete($habitID)){
+    public function destroy($habitId){
+        $habit = $this->habitModel->find($habitId);
+        EnsureOwnerShip::verify($habit, $this->userId);
+        if($this->habitModel->delete($habitId)){
             Response::jsonResponse(200, [
                 "status" => "success",
                 "message" => "habit deleted successfully"
