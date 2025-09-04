@@ -4,6 +4,7 @@ namespace App\Core;
 use App\Middlewares\AuthMiddleware;
 use App\Services\JwtService;
 use App\Core\App;
+use Helper\InputValidator;
 use Helper\Response;
 
 class Router{
@@ -13,27 +14,28 @@ class Router{
         
     }
 
-    public function addRoute($method,$uri, $handler, $protected){
+    public function addRoute($method,$uri, $handler, $protected, $rules){
         $this->routes[$method][] = [
             "path" => $uri,
             "handler" => $handler,
-            "protected" =>$protected
+            "protected" =>$protected,
+            "rules" => $rules
         ];
     }
-    public function get($uri, $handler, $protected = true){
-        $this->addRoute("GET", $uri, $handler, $protected);
+    public function get($uri, $handler, $protected = true, $rules = null){
+        $this->addRoute("GET", $uri, $handler, $protected, $rules);
     }
 
-    public function post($uri, $handler, $protected = true){
-        $this->addRoute("POST", $uri, $handler, $protected);
+    public function post($uri, $handler, $protected = true, $rules = null){
+        $this->addRoute("POST", $uri, $handler, $protected, $rules);
     }
 
-    public function put($uri, $handler, $protected = true){
-        $this->addRoute("PUT", $uri, $handler, $protected);
+    public function put($uri, $handler, $protected = true, $rules = null){
+        $this->addRoute("PUT", $uri, $handler, $protected, $rules);
     }
 
-    public function delete($uri, $handler, $protected = true){
-        $this->addRoute("DELETE", $uri, $handler, $protected);
+    public function delete($uri, $handler, $protected = true, $rules = null){
+        $this->addRoute("DELETE", $uri, $handler, $protected, $rules);
     }
 
     //  users/123/books/12 
@@ -57,7 +59,6 @@ class Router{
                     $jwtService = new JwtService;
                     $payLoad = $authMiddleWare->checkAuth($jwtService);
                 }
-
                 $controllerClassName = $route["handler"][0];
                 $controllerMethodName = $route["handler"][1];
                 $controllerInstance = App::initialise($controllerClassName, $payLoad);
@@ -65,6 +66,9 @@ class Router{
                 $args = $matches;
                 
                     $data = json_decode(file_get_contents("php://input"), true);
+                    if($route["rules"]){
+                    $data = InputValidator::validate($data, $route["rules"]);
+                }
                     $args[] = $data;
                 
                 
@@ -77,7 +81,7 @@ class Router{
             "message" => "url not  found"
         ]);
     }
-                // /users/{id}/books/{id} ==> #/users/(\d+)/books/(\d+)#
+                // /users/{id}/habits/{id} ==> #/users/(\d+)/habits/(\d+)#
     public function convertPathToRegex($path):string{
         $regex = preg_replace("#\{\w+\}#", "(\d+)", $path);
         return "#^$regex/?$#";
