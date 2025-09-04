@@ -7,7 +7,7 @@ class JournalController{
     private $userId;
 
     public function __construct( $journalModel, $payLoad) {
-        $this->journalModel = $journalModel;
+        $this->journalModel = $journalModel[0];
         $this->userId = $payLoad->sub;
     }
 

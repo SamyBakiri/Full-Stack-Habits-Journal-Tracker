@@ -1,7 +1,6 @@
 <?php
 namespace App\Core;
 use App\Core\Database;
-use App\Models\Habit;
 
 class App{
     public static function initialise($controllerClassName, $payLoad){
@@ -11,21 +10,20 @@ class App{
         $dbConnection = $dataBase->getConnection();
 
         $controllerModelMap = [
-            "App\Controllers\UserController" => "App\Models\User",
-            "App\Controllers\HabitController" => "App\Models\Habit",
-            "App\Controllers\JournalController" => "App\Models\Journal",
-            "App\Controllers\Habit_logsController" => "App\Models\Habit_logs",
-            "App\Controllers\AuthController" => "App\Models\User"
+            "App\Controllers\UserController" => ["App\Models\User"],
+            "App\Controllers\HabitController" => ["App\Models\Habit"],
+            "App\Controllers\JournalController" => ["App\Models\Journal"],
+            "App\Controllers\Habit_logsController" => ["App\Models\Habit_logs", "App\Models\Habit"],
+            "App\Controllers\AuthController" => ["App\Models\User"]
         ];
-        $modelClassName = $controllerModelMap[$controllerClassName] ?? null;
-        
-        $modelInctance = new $modelClassName($dbConnection);// create a model instance
-
-        //initialise the controller 
-        if($controllerClassName === "App\Controllers\Habit_logsController"){
-            return $controllerInstance = new $controllerClassName($modelInctance, new Habit($dbConnection) ,$payLoad);
+        foreach ($controllerModelMap[$controllerClassName] as $model) {
+            $modelClassName = $model ?? null;
+            $modelInctances[] = new $modelClassName($dbConnection);// create a model instance
         }
-        $controllerInstance = new $controllerClassName($modelInctance, $payLoad);
+        
+        //initialise the controller 
+        
+        $controllerInstance = new $controllerClassName($modelInctances, $payLoad);
 
         return $controllerInstance;
     }

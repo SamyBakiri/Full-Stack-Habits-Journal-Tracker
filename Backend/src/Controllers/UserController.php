@@ -9,7 +9,7 @@ class UserController{
 
 
     public function __construct($userModel, $payLoad) {
-        $this->userModel = $userModel;
+        $this->userModel = $userModel[0];
         $this->userId = $payLoad->sub;
     }
 

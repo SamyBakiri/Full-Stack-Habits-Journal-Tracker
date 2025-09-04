@@ -10,9 +10,9 @@ class Habit_logsController{
     private $habitModel;
     private $userId;
 
-    public function __construct( $habit_logsModel, $habitModel, $payLoad) {
-        $this->habit_logsModel = $habit_logsModel;
-        $this->habitModel = $habitModel;
+    public function __construct( $modelsInstances, $payLoad) {
+        $this->habit_logsModel = $modelsInstances[0];
+        $this->habitModel = $modelsInstances[1];
         $this->userId = $payLoad->sub;
     }
 

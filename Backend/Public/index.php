@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
+use App\Core\ErrorHandler;
 use Dotenv\Dotenv;
 use App\Core\Router;
 
@@ -9,9 +10,12 @@ use App\Core\Router;
 $dotenv = Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 
+ErrorHandler::register();
+
 $router = new Router();
 
 require __DIR__ . '/../Routes/api.php';
+
 
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 

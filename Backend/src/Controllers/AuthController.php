@@ -8,7 +8,7 @@ class AuthController{
     private $userModel;
 
     public function __construct($userModel) {
-        $this->userModel = $userModel;
+        $this->userModel = $userModel[0];
     }
 
     public function register($data){

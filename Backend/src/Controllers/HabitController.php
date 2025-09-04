@@ -9,7 +9,7 @@ class HabitController{
     private $userId;
 
     public function __construct($habitModel, $payLoad) {
-        $this->habitModel = $habitModel;
+        $this->habitModel = $habitModel[0];
         $this->userId = $payLoad->sub;
     }
 
