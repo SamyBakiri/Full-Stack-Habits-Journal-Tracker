@@ -56,9 +56,9 @@ The backend is **fully built, tested, and production-ready**, featuring:
 
 ## 🖼️ Screenshots (Coming Soon)  
 - API test results (Postman)
-- ![API Test](./Backend/storage/Screenshots/Screenshot 2025-09-23 080237.png)  
-- ![API Test](./Backend/storage/Screenshots/Screenshot 2025-09-23 081407.png)  
-- ![API Test](./Backend/storage/Screenshots/Screenshot 2025-09-23 081956.png)  
+- ![API Test](./Backend/storage/Screenshots/Screenshot-2025-09-23-080237.png)  
+- ![API Test](./Backend/storage/Screenshots/Screenshot-2025-09-23-081407.png)  
+- ![API Test](./Backend/storage/Screenshots/Screenshot-2025-09-23-081956.png)  
 - Database schema design  
 
 - ### Dashboard (UI mockup)
