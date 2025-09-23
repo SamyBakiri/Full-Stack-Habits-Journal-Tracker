@@ -13,6 +13,7 @@ class ErrorHandler {
         register_shutdown_function([self::class, 'handleShutdown']);
     }
 
+    // Warnings
     public static function handleError($severity, $message, $file, $line) {
         throw new \ErrorException($message, 0, $severity, $file, $line);
     }
@@ -31,8 +32,8 @@ class ErrorHandler {
             "message" => "Internal Server Error"
         ]);
     }
-
-    public static function handleShutdown() {
+    // Fatal errors
+    public static function handleShutdown() {  
         $error = error_get_last();
         if ($error !== null) {
             Logger::error("Fatal Error: {$error['message']}", [
